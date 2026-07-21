@@ -1,5 +1,10 @@
-#Cheng Zher's code section:
+import os
 
+print(os.getcwd())
+
+# ======================
+#Cheng Zher's code section:
+# ======================
 def main_menu():
     while True:
         print("=====================================")
@@ -90,7 +95,9 @@ def draft_new_post():
     print(f"\n{post_id}|{platform}|{caption}|{schedule_date}|{status}") #display field separation using "|"
 
 
+# ======================
 #Keen's code section:
+# ======================
 
 
 def post_status_menu():
@@ -253,8 +260,9 @@ def view_full_details(): #to check the specific details of a post, since some ma
 
 
 
+# ======================
 #Yao Teng's code section:
-
+# ======================
 
 #----------------smaller functions-----------------
 def engagement_file_check():
