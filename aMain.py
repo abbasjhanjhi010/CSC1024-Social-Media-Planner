@@ -1,6 +1,7 @@
-import os
-
-print(os.getcwd())
+# ======================
+#Abbas's code section:
+# ======================
+from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, validate_post_status
 
 # ======================
 #Cheng Zher's code section:
@@ -83,7 +84,7 @@ def draft_new_post():
             break
         else:
             print("Invalid platform. Please choose from the list above.")
-    caption = input("Enter Caption: ").strip()
+    caption = validate_required_input("Enter Caption: ")
     schedule_date = input("Enter Scheduled Date (DD/MM/YYYY): ").strip()
     status = "Draft" #every new created post starts with Draft status
     with open("posts.txt","a") as file: #"a" = append mode, add lines without erasing existing posts
