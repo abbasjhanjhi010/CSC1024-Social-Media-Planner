@@ -51,8 +51,8 @@ def new_post_menu():
             case "2":
                 return #return back to main_menu() loop
             case "3":
-                print("Exiting Add New Post menu...")
-                break #exits new_post_menu() loop, return control to main_menu() loop
+                print("Exiting the Add New Post Menu...")
+                exit() #exits the program completely instead of returning to main menu loop
             case _:
                 print("Enter valid choice (1-3)")
 
@@ -84,7 +84,7 @@ def draft_new_post():
             break
         else:
             print("Invalid platform. Please choose from the list above.")
-    caption = validate_required_input("Enter Caption: ")
+    caption = input("Enter Caption: ").strip()
     schedule_date = input("Enter Scheduled Date (DD/MM/YYYY): ").strip()
     status = "Draft" #every new created post starts with Draft status
     with open("posts.txt","a") as file: #"a" = append mode, add lines without erasing existing posts
@@ -239,14 +239,13 @@ def display_content_calendar():
 
 def view_full_details(): #to check the specific details of a post, since some may be cut off for being too lengthy in the table
     print("\n====== View Post Details ======")
-    post_id = input("Enter Post ID: ").strip()
+    # Abbas - validation file
+    post_id = validate_required_input("\nEnter Post ID: ")
 
-    try:
-        with open("posts.txt", "r") as file:
-            lines = file.readlines() #read saved post lines in posts.txt
-    except FileNotFoundError: 
-        print("No posts found.")
-        return
+    if not validate_unique_id(post_id):
+        print("Post ID already exist")
+    return
+    #end of function reference, also removed redundant try catch block 
 
     for line in lines: #search for matching post ID in posts.txt
         data = line.strip().split(",") #split line with comma to match their respective fields/columns
