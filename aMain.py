@@ -309,7 +309,7 @@ def id_verification(userin):
                 return True
     return False
 
-    #remvoed int_validity and replaced with validate_positive_integer
+    #remvoed int_validity and replaced with validate_positive_integer - Abbas
 
 def interaction_formula(view,like,comment,shares):
     #calculate interaction score
