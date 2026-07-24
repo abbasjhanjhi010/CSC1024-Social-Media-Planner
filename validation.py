@@ -1,6 +1,6 @@
 import datetime
 # ======================
-# Abbas's contirbution - Input Validation Functions
+# Abbas's contirbution, adding validation functions
 # ======================
 
 def validate_required_input(prompt):   # validates against empty fields

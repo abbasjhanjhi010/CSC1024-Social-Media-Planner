@@ -57,16 +57,14 @@ def new_post_menu():
                 print("Enter valid choice (1-3)")
 
 def draft_new_post():
-    post_id = input("\nEnter Post ID: ")
-    try:
-        with open("posts.txt","r") as file:
-            for line in file:
-                data = line.strip().split(",") #splits each saved line to comma separated fields
-                if data[0] == post_id: #data[0] is post_id field that checks for duplicate IDs before adding
-                    print("Post ID already exist")
-                    return #exits draft_new_post() early, skips the rest of post creation
-    except FileNotFoundError: #posts.txt won't exist yet on very first run
-        pass #nothing to check yet, so just continue
+   # Abbas validation file, removed try catch block previous in its place
+    while True:
+        post_id = validate_required_input("\nEnter Post ID: ")
+        if validate_unique_id(post_id):
+            break
+        print("Post ID already exists. Please enter a unique ID.")
+        # end of abbas validation file
+
     print("\nAvailable Platforms")
     platform_list = []
     try:
@@ -78,14 +76,18 @@ def draft_new_post():
     except FileNotFoundError:
         print("platforms.txt not found")
         return #cannot validate platform choice without file, so stop
-    while True: #keep asking till entered platform matches one from loaded list
+    
+    #Abbas validation file
+    while True: 
         platform = input("\nEnter Platform: ").strip()
-        if platform in platform_list: #validate against platforms read from file
+        if validate_platform(platform): # validates platform using platforms.txt
             break
-        else:
-            print("Invalid platform. Please choose from the list above.")
-    caption = input("Enter Caption: ").strip()
-    schedule_date = input("Enter Scheduled Date (DD/MM/YYYY): ").strip()
+        print("Invalid platform. Please choose from the list above.")
+
+    caption = validate_required_input("Enter Caption: ") # ensures non-empty caption
+    schedule_date = validate_date("Enter Scheduled Date (DD/MM/YYYY): ") # validates date format
+    #end of validation file
+
     status = "Draft" #every new created post starts with Draft status
     with open("posts.txt","a") as file: #"a" = append mode, add lines without erasing existing posts
         file.write(f"{post_id},{platform},{caption},{schedule_date},{status}\n") #comma separated to match read/split format in file
@@ -123,7 +125,8 @@ def post_status_menu():
 
 def update_post_status():
     print("\n====== Update Post Status ======")
-    post_id = input("Enter the Post ID to update: ").strip()
+
+    post_id = validate_required_input("Enter the Post ID to update: ") #now goes to validation.py
 
     try:
         with open("posts.txt", "r") as file: #opens and reads posts.txt 
@@ -137,7 +140,7 @@ def update_post_status():
 
     for line in lines: #goes through each line already saved in posts.txt 
         data = line.strip().split(",") 
-        if data[0] == post_id: #designates data[0] as post ID
+        if data[0].upper() == post_id.upper(): #designates data[0] as post ID
             post_found = True #check if post ID was found, status gets updated to true
             current_status = data[4] #stores the post current status and is used to check for future updates to status
             print(f'\nPost ID: {data[0]}')
@@ -239,13 +242,17 @@ def display_content_calendar():
 
 def view_full_details(): #to check the specific details of a post, since some may be cut off for being too lengthy in the table
     print("\n====== View Post Details ======")
+
     # Abbas - validation file
     post_id = validate_required_input("\nEnter Post ID: ")
+    
 
-    if not validate_unique_id(post_id):
-        print("Post ID already exist")
-    return
-    #end of function reference, also removed redundant try catch block 
+    try:
+        with open("posts.txt", "r") as file:
+            lines = file.readlines() #read saved post lines in posts.txt
+    except FileNotFoundError: 
+        print("No posts found.")
+        return
 
     for line in lines: #search for matching post ID in posts.txt
         data = line.strip().split(",") #split line with comma to match their respective fields/columns
@@ -301,15 +308,9 @@ def id_verification(userin):
             if data[0] == userin.upper():
                 return True
     return False
-def int_validity(userin):
-    #checks whether user input is an integer datatype or not
-    while True:
-        try:
-            value = int(input(userin))      #try to convert user input into integer
-            return value                    #if success, returns the value
-        except ValueError:                  #if an error occurred, tell user to enter an integer
-            print("\n============================="
-                  "\nPlease enter a valid integer.\n")
+
+    #remvoed int_validity and replaced with validate_positive_integer
+
 def interaction_formula(view,like,comment,shares):
     #calculate interaction score
     view_score = view * 0.001
@@ -358,10 +359,14 @@ def engagement_entry():
                     platform = data[1]
                     print(f"\nYou are currently adding entry for {post_ID}.")
                     #use int_validity(userin) to check whether user input is an integer without causing an error
-                    views = int_validity("Enter the number of views: ")
-                    likes = int_validity("Enter the number of likes: ")
-                    comments = int_validity("Enter the number of comments: ")
-                    shares = int_validity("Enter the number of shares: ")
+
+                    # now using the validation file to verify instead
+                    views = validate_positive_integer("Enter the number of views: ")
+                    likes = validate_positive_integer("Enter the number of likes: ")
+                    comments = validate_positive_integer("Enter the number of comments: ")
+                    shares = validate_positive_integer("Enter the number of shares: ")
+                    #end of abbas contribution
+
                     with open(f"engagement.txt", "a") as file:      #opens engagement.txt and appends the data inputted inside
                         file.write(f"{post_ID},{platform},{views},{likes},{comments},{shares}\n")
                     print(f"\n========================================"
