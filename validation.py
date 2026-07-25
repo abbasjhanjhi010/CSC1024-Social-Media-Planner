@@ -34,7 +34,10 @@ def validate_positive_integer(prompt):   # makes sure all inputs for record enga
             print("Enter only a positive integer.")
 
 
-def validate_unique_id(post_id):    # checks if the POSTID is unique or repeating, will return FALSE if its repeating
+def validate_unique_id(post_id):    # Checks if POSTID is unique and numeric
+    if not post_id.isdigit():
+        return False
+
     try:
         with open("posts.txt", "r") as file:
             for line in file:
@@ -45,7 +48,6 @@ def validate_unique_id(post_id):    # checks if the POSTID is unique or repeatin
         # File does not exist yet, therefore no duplicates
         pass
     return True
-
 
 def validate_platform(platform_input):   # runs check if user input of platofrm exists, if yes True, otheriwse its False
     try:
