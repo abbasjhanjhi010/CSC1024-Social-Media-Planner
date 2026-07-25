@@ -11,7 +11,6 @@ def validate_required_input(prompt):   # validates against empty fields
             return value
         print("Input cannot be empty. Please try again.")
 
-
 def validate_date(prompt):   # efnorces proper date fromat 
 
     while True:
@@ -21,8 +20,6 @@ def validate_date(prompt):   # efnorces proper date fromat
             return date_input
         except ValueError:
             print("Invalid date. Please enter date in DD/MM/YYYY format.")
-
-
 
 def validate_positive_integer(prompt):   # makes sure all inputs for record engagement metrics are positive
 
