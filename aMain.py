@@ -42,7 +42,7 @@ def new_post_menu():
     while True:
         print("\nOption 1: Add New Post")
         print("\n1. Draft New Post")
-        print("2. Go to Main menu")
+        print("2. Go Back")
         print("3. Exit")
         first_choice = input("\nEnter your choice: ").strip()
         match first_choice:
@@ -51,13 +51,13 @@ def new_post_menu():
             case "2":
                 return #return back to main_menu() loop
             case "3":
-                print("Exiting the Add New Post Menu...")
+                print("Exiting Program...")
                 exit() #exits the program completely instead of returning to main menu loop
             case _:
                 print("Enter valid choice (1-3)")
 
 def draft_new_post():
-   # Abbas validation file, removed try catch block previous in its place
+   # Abbas validation file, removed try catch block previously in its place
     while True:
         post_id = validate_required_input("\nEnter Post ID: ")
         if validate_unique_id(post_id):
@@ -431,8 +431,7 @@ def total_posts():   #calculates the total posts from each platform
            f"\nX -- {x}"
            f"\nTotal Posted -- {total_posted}"
            f"\n==============================\n")
-def best_performing():
-    #calculate and find the best performance post
+def best_performing():      #calculate and find the best performance post
     try:
         best_score = 0
         best_post = None        #sets the current best post as none to prevent error
