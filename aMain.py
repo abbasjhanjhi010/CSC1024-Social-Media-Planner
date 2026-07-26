@@ -43,16 +43,12 @@ def new_post_menu():
         print("\nOption 1: Add New Post")
         print("\n1. Draft New Post")
         print("2. Go Back")
-        print("3. Exit")
         first_choice = input("\nEnter your choice: ").strip()
         match first_choice:
             case "1":
                 draft_new_post()
             case "2":
                 return #return back to main_menu() loop
-            case "3":
-                print("Exiting Program...")
-                exit() #exits the program completely instead of returning to main menu loop
             case _:
                 print("Enter valid choice (1-3)")
 
