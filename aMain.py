@@ -38,9 +38,12 @@ def main_menu():
             case _:
                 print("Enter valid choice (1-7)")
 
+def subheading(option):
+    print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading- Abbas
+
 def new_post_menu():
     while True:
-        print("\n--------------------------   \nOption 1: Add New Post")
+        subheading("Add New Post")
         print("1. Draft New Post")
         print("2. Go Back")
         first_choice = input("\nEnter your choice: ").strip()
@@ -100,10 +103,8 @@ def draft_new_post():
 
 def post_status_menu():
     while True:
-        print("==============================")
-        print("Update Post Status")
-        print("==============================")
-        print("\n1. Update Status")
+        subheading("Update Post Status")
+        print("1. Update Status")
         print("2. Go to Main Menu")
         choice = input("\nEnter your choice: ").strip()
         match choice:
@@ -180,9 +181,7 @@ def update_post_status():
 
 def content_calendar_menu():
     while True:
-        print("==============================")
-        print("Content Calendar Menu")
-        print("==============================")
+        subheading("Content Calendar Menu")
         print("\n1. Display All Posts")
         print("2. View Full Post Details")
         print("3. Go to Main Menu")
@@ -327,9 +326,7 @@ def total_interaction(platform):
 def engagement_entry():
     #allows user to record engagement metrics
     engagement_file_check()     #runs the function to check whether engagement.txt exists
-    print("\n======================================================================"
-          "\nRecord Engagement Data"
-          "\n======================================================================")
+    subheading("Record Engagement Metrics")
     valid_posts = posted_check()    #gets a list of posts with "Posted" status
     print("Please choose from one of these posts to log engagement data.\n")
     for i in valid_posts:       #prints out every valid posts
@@ -373,10 +370,8 @@ def engagement_entry():
 def generate_report_menu():
     #generates a menu to print performance report
     while True:
-        print("\n=============================="
-              "\nPrint Performance Report"
-              "\n=============================="
-              "\n1. Total Posts"
+        subheading("Performance Report")
+        print("\n1. Total Posts"
               "\n2. Best Performing Post"
               "\n3. Highest Interacted Platform"
               "\n4. Print All"
@@ -507,9 +502,7 @@ def export_report():
         total_posts_report = total_posts()                  #print out and assign every mini report to their own unique variable
         best_performing_report = best_performing()
         highest_interaction_report = highest_interaction()
-        print("\n========================="
-              "\nExport Performance Report"
-              "\n=========================")
+        subheading("Exporting Performance Report..")  
         while True:
             report_name = input("\nEnter the name of the file [Q to quit]: ")       #prompts user to enter name of report
             if report_name.strip() != "":       #checks if user entered nothing, if yes then prompt user to enter again
