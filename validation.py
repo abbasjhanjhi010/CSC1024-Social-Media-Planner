@@ -9,7 +9,7 @@ def validate_required_input(prompt):   # validates against empty fields
         value = input(prompt).strip()
         if value != "":
             return value
-        print("Input cannot be empty. Please try again.")
+        print("--> Input cannot be empty. Please try again.")
 
 def validate_date(prompt):   # efnorces proper date fromat 
 
@@ -19,7 +19,7 @@ def validate_date(prompt):   # efnorces proper date fromat
             datetime.datetime.strptime(date_input, "%d/%m/%Y")
             return date_input
         except ValueError:
-            print("Invalid date. Please enter date in DD/MM/YYYY format.")
+            print("-> Invalid date. Please enter date in DD/MM/YYYY format.")
 
 def validate_positive_integer(prompt):   # makes sure all inputs for record engagement metrics are positive
 
@@ -29,21 +29,21 @@ def validate_positive_integer(prompt):   # makes sure all inputs for record enga
             if number >= 0:
                 return number
             else:
-                print("Number cannot be negative.")
+                print("--> Number cannot be negative.")
         except ValueError:
-            print("Enter only a positive integer.")
+            print("--> Enter only a positive integer.")
 
 
 def validate_unique_id(post_id):    # Checks if POSTID is unique and numeric
     if not post_id.isdigit():
-        return False
+        return print("--> Only positive integer ID's are accepted")
 
     try:
         with open("posts.txt", "r") as file:
             for line in file:
                 data = line.strip().split(",")
                 if data[0].upper() == post_id.upper():
-                    return False
+                    return print("--> The ID you entered isn't unique, enter unique ID.")
     except FileNotFoundError:
         # File does not exist yet, therefore no duplicates
         pass
@@ -58,7 +58,7 @@ def validate_platform(platform_input):   # runs check if user input of platofrm 
                 if data[1].lower() == platform_input.lower():
                     return True
     except FileNotFoundError:
-        print("platforms.txt not found.")
+        print("--> platforms.txt not found.")
     return False
 
 

@@ -60,9 +60,9 @@ def draft_new_post():
    # Abbas validation file, removed try catch block previous in its place
     while True:
         post_id = validate_required_input("\nEnter Post ID: ")
-        if validate_unique_id(post_id):
+        if validate_unique_id(post_id) == False:
+            print("Please enter a unique, positive integer ID.")
             break
-        print("Post ID already exists. Please enter a unique ID.")
         # end of abbas validation file
 
     print("\nAvailable Platforms")
