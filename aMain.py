@@ -60,8 +60,7 @@ def draft_new_post():
    # Abbas validation file, removed try catch block previous in its place
     while True:
         post_id = validate_required_input("\nEnter Post ID: ")
-        if validate_unique_id(post_id) == False:
-            print("Please enter a unique, positive integer ID.")
+        if validate_unique_id(post_id):
             break
         # end of abbas validation file
 
@@ -150,8 +149,8 @@ def update_post_status():
             print(f'Current Status: {current_status}')
 
             if current_status == "Draft": #allows posts with 'draft' status to update to scheduled or posted
-                print("\n1. Update Status to Scheduled")
-                print("2. Update Status to Posted")
+                print("\n1. Update to Scheduled")
+                print("2. Update to Posted")
                 print("3. Cancel")
                 status_choice = input("Enter option (1-3)\n")
 
@@ -308,7 +307,6 @@ def id_verification(userin):
             if data[0] == userin.upper():
                 return True
     return False
-
     #remvoed int_validity and replaced with validate_positive_integer - Abbas
 
 def interaction_formula(view,like,comment,shares):
@@ -411,12 +409,8 @@ def generate_report_menu():
                 break
             case _:
                 print("Enter a valid choice (1-5)")
-def total_posts():
-    #calculates the total posts from each platform
-    fb = 0
-    ig = 0
-    tt = 0
-    x = 0
+def total_posts():   #calculates the total posts from each platform
+    fb, ig, tt, x = 0
     data = posted_check()       #gets the data of all posts with "Posted" status
     for row in data:            #sort each row of data by platform
         platform = row[1]
