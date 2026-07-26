@@ -11,7 +11,7 @@ def main_menu():
         print("=====================================")
         print("SOCIAL MEDIA CONTENT PLANNER")
         print("=====================================")
-        print("\n1. Add New Post")
+        print("1. Add New Post")
         print("2. Update Post Status")
         print("3. Record Engagement Metrics")
         print("4. Display Content Calendar")
@@ -33,15 +33,15 @@ def main_menu():
             case "6":
                 export_report()
             case "7":
-                print("Exiting main menu...")
+                print("Exiting Program...")
                 break #exits the while True loop, ending the program
             case _:
                 print("Enter valid choice (1-7)")
 
 def new_post_menu():
     while True:
-        print("\nOption 1: Add New Post")
-        print("\n1. Draft New Post")
+        print("\n--------------------------   \nOption 1: Add New Post")
+        print("1. Draft New Post")
         print("2. Go Back")
         first_choice = input("\nEnter your choice: ").strip()
         match first_choice:
@@ -105,16 +105,12 @@ def post_status_menu():
         print("==============================")
         print("\n1. Update Status")
         print("2. Go to Main Menu")
-        print("3. Exit")
         choice = input("\nEnter your choice: ").strip()
         match choice:
             case '1':
                 update_post_status()
             case '2':
                 return #returns back to main menu loop
-            case '3':
-                print("Exiting the Update Post Status Menu...")
-                exit() #exits the program completely instead of returning to main menu loop
             case _:
                 print("Enter a valid option (1-3)")
 
@@ -190,7 +186,6 @@ def content_calendar_menu():
         print("\n1. Display All Posts")
         print("2. View Full Post Details")
         print("3. Go to Main Menu")
-        print("4. Exit")
         choice = input("\nEnter your choice: ").strip()
         match choice:
             case "1":
@@ -199,9 +194,6 @@ def content_calendar_menu():
                 view_full_details()
             case "3":
                 return #returns back to main menu loop
-            case "4":
-                print("Exiting Content Calendar Menu...")
-                exit() #exits the program completely instead of returning to main menu loop
             case _:
                 print("Enter valid choice (1-4)")
 
