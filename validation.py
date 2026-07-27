@@ -4,7 +4,6 @@ import datetime
 # ======================
 
 def validate_required_input(prompt):   # validates against empty fields
-
     while True:
         value = input(prompt).strip()
         if value != "":
@@ -12,7 +11,6 @@ def validate_required_input(prompt):   # validates against empty fields
         print("--> Input cannot be empty. Please try again.")
 
 def validate_date(prompt):   # efnorces proper date fromat 
-
     while True:
         date_input = input(prompt).strip()
         try:
@@ -22,7 +20,6 @@ def validate_date(prompt):   # efnorces proper date fromat
             print("-> Invalid date. Please enter date in DD/MM/YYYY format.")
 
 def validate_positive_integer(prompt):   # makes sure all inputs for record engagement metrics are positive
-
     while True:
         try:
             number = int(input(prompt))

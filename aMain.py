@@ -3,6 +3,8 @@
 # ======================
 from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, validate_post_status
 
+def subheading(option):
+    print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
 # ======================
 #Cheng Zher's code section:
 # ======================
@@ -37,9 +39,6 @@ def main_menu():
                 break #exits the while True loop, ending the program
             case _:
                 print("Enter valid choice (1-7)")
-
-def subheading(option):
-    print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading- Abbas
 
 def new_post_menu():
     while True:
@@ -83,7 +82,7 @@ def draft_new_post():
         print("Invalid platform. Please choose from the list above.")
 
     caption = validate_required_input("Enter Caption: ") # ensures non-empty caption
-    schedule_date = validate_date("Enter Scheduled Date (DD/MM/YYYY): ") # validates date format
+    schedule_date = validate_date("Enter Scheduled Date (DD/MM/YYYY): ") # validates date format    
     #end of validation file
 
     status = "Draft" #every new created post starts with Draft status
@@ -95,17 +94,15 @@ def draft_new_post():
     print("posts.txt")
     print(f"\n{post_id}|{platform}|{caption}|{schedule_date}|{status}") #display field separation using "|"
 
-
 # ======================
 #Keen's code section:
 # ======================
-
 
 def post_status_menu():
     while True:
         subheading("Update Post Status")
         print("1. Update Status")
-        print("2. Go to Main Menu")
+        print("2. Go back")
         choice = input("\nEnter your choice: ").strip()
         match choice:
             case '1':
@@ -184,7 +181,7 @@ def content_calendar_menu():
         subheading("Content Calendar Menu")
         print("\n1. Display All Posts")
         print("2. View Full Post Details")
-        print("3. Go to Main Menu")
+        print("3. Go Back")
         choice = input("\nEnter your choice: ").strip()
         match choice:
             case "1":
@@ -250,8 +247,6 @@ def view_full_details(): #to check the specific details of a post, since some ma
             print(f"Status: {data[4]}")
             return #post ID was found and printed so it stops searching
     print("Post ID not found.") #match was not found for the post ID
-
-
 
 # ======================
 #Yao Teng's code section:
