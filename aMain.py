@@ -180,19 +180,11 @@ def update_post_status():
 def content_calendar_menu():
     while True:
         subheading("Content Calendar")
-        print("\n1. Display All Posts")
-        print("2. View Individual Post Detail")
-        print("3. Go Back")
-        choice = input("\nEnter your choice: ").strip()
-        match choice:
-            case "1":
-                display_content_calendar()
-            case "2":
-                view_individual_post_detail()
-            case "3":
-                return #returns back to main menu loop
-            case _:
-                print("Enter valid choice (1-4)") 
+        #or just the notification message for content calendar 
+        display_content_calendar()
+        # LATER ADD THE WAIT FUNCTION
+        # AND SOME OTHER MESSAGE LIKE A GO BACK OR SOMETHING SIMILA
+        return      # exit loop
 
 def display_content_calendar():
     notification("Content Calendar") 
