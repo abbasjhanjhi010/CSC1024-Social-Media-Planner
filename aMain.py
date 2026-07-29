@@ -188,6 +188,11 @@ def content_calendar_menu():
         time.sleep(2)       # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
         return      # exits loop after 2 second delay 
 
+def sorted_calendar(data):
+    return data[3].split("/")[::-1]    
+    #reverses the order of data[3] which is the scheduled date column, into YYYY/MM/DD in order to sort by year first instead of day, does not affect the final display
+    #split("/") separates the day, month, year into respective fields, [::-1] reverses the order into year, month, day
+
 def display_content_calendar():
     notification("Content Calendar") 
     try:
@@ -200,12 +205,19 @@ def display_content_calendar():
         print("Post does not exist.")
         return
 
+    posts = [] #new list to temporarily store the sorted schedule dates
+    for line in lines:
+        posts.append(line.strip().split(",")) #adds each new line into the temporary posts list and splits with a comma
+
+    posts.sort(key=sorted_calendar, reverse=True) 
+    #'key=' specifically calls on 'sorted_calendar' to sort the posts by their scheduled date oldest first, using the 'sorted_calendar' to compare 
+    #'reverse=True' because without it the scheduled dates are ordered with the older posts sorted to the top
+                     
     #for the column headers, formatted to ensure the table is aligned and fix the width
     print(f"{'Post ID':<10}{'Platform':<15}{'Caption':<25}{'Date':<14}{'Status':<10}")
     print("-" * 74) #prints - to match the width of the all column header width
 
-    for line in lines:
-        data = line.strip().split(",") #splits line with commas
+    for data in posts: #loops through the prior posts list and assigns each data index to a column to match
         post_id = data[0]
         platform = data[1]
         caption = data[2]
@@ -213,7 +225,7 @@ def display_content_calendar():
         status = data[4]
 
         if len(caption) > 20: #prevent text from overflowing to next column after 20 letters
-            caption = caption[0:20] + "..." #adds ... after the 20 letters
+            caption = caption[0:20] + "..." #adds '...' after the 20 letters
 
         #left aligning each column field to each respective field width
         print(f"{post_id:<10}{platform:<15}{caption:<25}{schedule_date:<14}{status:<10}")
