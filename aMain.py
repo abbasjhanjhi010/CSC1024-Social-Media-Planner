@@ -6,7 +6,7 @@ from validation import validate_date, validate_positive_integer,validate_require
 def subheading(option):
     print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
 def heading(option):
-    print(f"====================================={option}=====================================")  # takes less space for heading 
+    print(f"=====================================\n{option}\n=====================================")  # takes less space for heading 
 
 # ======================
 #Cheng Zher's code section:
