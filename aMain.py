@@ -427,19 +427,22 @@ def highest_interaction():   #finds the platform with the highest interaction
                         tt_score += interaction_formula(int(data[2]),int(data[3]),int(data[4]),int(data[5]))
                     case "X":
                         x_score += interaction_formula(int(data[2]),int(data[3]),int(data[4]),int(data[5]))
-        #compares score of each platform to determine the highest
-        if fb_score > ig_score and fb_score > tt_score and ig_score > x_score:
-            best_platform = "Facebook"
-            best_score = fb_score
-        elif ig_score > fb_score and ig_score > tt_score and ig_score > x_score:
-            best_platform = "Instagram"
-            best_score = ig_score
-        elif tt_score > fb_score and tt_score > ig_score and tt_score > x_score:
-            best_platform = "TikTok"
-            best_score = tt_score
-        elif x_score > fb_score and x_score > ig_score and x_score > ig_score:
-            best_platform = "X"
-            best_score = x_score
+
+        #compares score of each platform to determine the highest value
+        best_score = max(ig_score, fb_score, tt_score, x_score)
+        best_platforms = []
+
+        if ig_score == best_score:  # makes it possible to identify multiple platforms with highest views and display all names
+            best_platforms.append("Instagram")
+        if fb_score == best_score:
+            best_platforms.append("Facebook")
+        if tt_score == best_score:
+            best_platforms.append("TikTok")
+        if x_score == best_score:
+            best_platforms.append("X")
+  
+        best_platform = ", ".join(best_platforms)  #merges all values from best_platforms separating them with ", " converts from array to string var
+        
         platform_interaction = total_interaction(best_platform)     #calculates the total interactions from said platform
         return(f"\n\nHighest Interacted Platform"
                f"\n=============================="
