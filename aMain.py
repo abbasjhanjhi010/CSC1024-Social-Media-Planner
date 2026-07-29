@@ -3,11 +3,12 @@
 # ======================
 from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, file_check
 
-def subheading(option):
-    print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
-def heading(option):
-    print(f"=====================================\n{option}\n=====================================")  # takes less space for heading 
-
+def subheading(content):
+    print(f"\n----------------------------\n{content}\n-----------------------")   #takes less space for subheading
+def heading(content):
+    print(f"\n=====================================\n{content}\n=====================================")  # takes less space for heading 
+def notification(content):
+    print(f"\n==============={content}===============\n")
 # ======================
 #Cheng Zher's code section:
 # ======================
@@ -93,7 +94,7 @@ def draft_new_post():
         file.write(f"{post_id},{platform},{caption},{schedule_date},{status}\n") #comma separated to match read/split format in file
     print("\n========Post added successfully========")
     print(f"---> [Saved into posts.txt]")
-    print(f"     Id: {post_id} | Platform: {platform} | Caption: {caption} | Schedule: {schedule_date} | Status: {status}") #display field separation using "|"
+    print(f"     ID: {post_id} | Platform: {platform} | Caption: {caption} | Schedule: {schedule_date} | Status: {status}") #display field separation using "|"
 
 # ======================
 #Keen's code section:
@@ -194,7 +195,7 @@ def content_calendar_menu():
                 print("Enter valid choice (1-4)")
 
 def display_content_calendar():
-    print("\n====== Content Calendar ======")
+    notification("Content Calendar")
     try:
         with open("posts.txt", "r") as file:
             lines = file.readlines() #reads all lines in posts.txt
@@ -432,10 +433,10 @@ def best_performing():      #calculate and find the best performance post
                f"\nPerformance Score -- {best_score:.2f}"
                f"\n==============================\n")
     except FileNotFoundError:
-        return("\n\n======================================================================"
+        return("\n======================================================================"
                "\nengagement.txt does not exists, please enter engagement metrics first.\n")
-def highest_interaction():
-    #finds the platform with the highest interaction
+
+def highest_interaction():   #finds the platform with the highest interaction
     try:
         best_score = 0
         best_platform = None
