@@ -5,14 +5,15 @@ from validation import validate_date, validate_positive_integer,validate_require
 
 def subheading(option):
     print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
+def heading(option):
+    print(f"====================================={option}=====================================")  # takes less space for heading 
+
 # ======================
 #Cheng Zher's code section:
 # ======================
 def main_menu():
     while True:
-        print("=====================================")
-        print("SOCIAL MEDIA CONTENT PLANNER")
-        print("=====================================")
+        heading("Social Media Content Planner")
         print("1. Add New Post")
         print("2. Update Post Status")
         print("3. Record Engagement Metrics")
@@ -88,16 +89,13 @@ def draft_new_post():
     status = "Draft" #every new created post starts with Draft status
     with open("posts.txt","a") as file: #"a" = append mode, add lines without erasing existing posts
         file.write(f"{post_id},{platform},{caption},{schedule_date},{status}\n") #comma separated to match read/split format in file
-    print("\nPost added successfully.")
-    print(f"Status: {status}")
-    print("\nThen save into: ")
-    print("posts.txt")
-    print(f"\n{post_id}|{platform}|{caption}|{schedule_date}|{status}") #display field separation using "|"
+    print("\n========Post added successfully========")
+    print(f"---> [Saved into posts.txt]")
+    print(f"     {post_id} | {platform} | {caption} | {schedule_date} | Status: {status}") #display field separation using "|"
 
 # ======================
 #Keen's code section:
 # ======================
-
 def post_status_menu():
     while True:
         subheading("Update Post Status")
