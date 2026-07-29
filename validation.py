@@ -57,16 +57,3 @@ def validate_platform(platform_input):   # runs check if user input of platofrm 
     except FileNotFoundError:
         print("--> platforms.txt not found.")
     return False
-
-
-def validate_post_status(post_id):   #Checks whether a post exists and returns its status. and says "none" if it doesn't exist
-    try:
-        with open("posts.txt", "r") as file:
-            for line in file:
-                data = line.strip().split(",")
-                if data[0].upper() == post_id.upper():
-                    return data[4]
-                
-    except FileNotFoundError:
-        pass
-    return None

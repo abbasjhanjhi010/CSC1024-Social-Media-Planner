@@ -1,7 +1,7 @@
 # ======================
 #Abbas's code section:
 # ======================
-from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, validate_post_status
+from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform
 
 def subheading(option):
     print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
