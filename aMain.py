@@ -91,7 +91,7 @@ def draft_new_post():
         file.write(f"{post_id},{platform},{caption},{schedule_date},{status}\n") #comma separated to match read/split format in file
     print("\n========Post added successfully========")
     print(f"---> [Saved into posts.txt]")
-    print(f"     {post_id} | {platform} | {caption} | {schedule_date} | Status: {status}") #display field separation using "|"
+    print(f"     Id: {post_id} | Platform: {platform} | Caption: {caption} | Schedule: {schedule_date} | Status: {status}") #display field separation using "|"
 
 # ======================
 #Keen's code section:
