@@ -1,7 +1,7 @@
 # ======================
 #Abbas's code section:
 # ======================
-from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform
+from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, file_check
 
 def subheading(option):
     print(f"\n----------------------------\n{option}\n-----------------------")   #takes less space for subheading
@@ -57,7 +57,9 @@ def new_post_menu():
 
 def draft_new_post():
    # Abbas validation file, removed try catch block previously in its place
-    while True:
+   file_check("posts.txt")
+   file_check("platforms.txt")
+   while True:
         post_id = validate_required_input("\nEnter Post ID: ")
         if validate_unique_id(post_id):
             break
@@ -251,17 +253,7 @@ def view_full_details(): #to check the specific details of a post, since some ma
 # ======================
 
 #----------------smaller functions-----------------
-def engagement_file_check():
-    #checks whether engagement.txt exists
-    print("\nChecking if file exists...")
-    try:
-        with open("engagement.txt", "r") as file:   #try to open engagement.txt in read mode,
-            print("File exists, no changes made.")  #if successful, it means the file exists
-            pass
-    except FileNotFoundError:   #if an error occurred, that means the file does not exists
-        print("File does not exists, creating a new file.")     #opens a new file called engagement.txt
-        with open("engagement.txt", "w") as file:
-            pass
+
 def posted_check():
     #checks and creates a list of post IDs that have the "Posted" status
     posted_posts= []
@@ -318,7 +310,7 @@ def total_interaction(platform):
 #--------------------------------------------------
 def engagement_entry():
     #allows user to record engagement metrics
-    engagement_file_check()     #runs the function to check whether engagement.txt exists
+    file_check("engagement.txt")     #runs the function to check whether engagement.txt exists
     subheading("Record Engagement Metrics")
     valid_posts = posted_check()    #gets a list of posts with "Posted" status
     print("Please choose from one of these posts to log engagement data.\n")
