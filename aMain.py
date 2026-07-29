@@ -1,6 +1,8 @@
 # ======================
 #Abbas's code section:
 # ======================
+import time    # email sent to Dr to double check if this is allowed or not
+
 from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, file_check
 
 def subheading(content):
@@ -182,9 +184,9 @@ def content_calendar_menu():
         subheading("Content Calendar")
         #or just the notification message for content calendar 
         display_content_calendar()
-        # LATER ADD THE WAIT FUNCTION
-        # AND SOME OTHER MESSAGE LIKE A GO BACK OR SOMETHING SIMILA
-        return      # exit loop
+        time.sleep(2)       # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
+        # maybe give confirmation message or something over here
+        return      # exits loop
 
 def display_content_calendar():
     notification("Content Calendar") 
@@ -221,7 +223,6 @@ def display_content_calendar():
 # ======================
 
 #----------------smaller functions-----------------
-
 def posted_check():
     #checks and creates a list of post IDs that have the "Posted" status
     posted_posts= []
@@ -276,8 +277,7 @@ def total_interaction(platform):
            f"\nTotal Comments -- {comments}"
            f"\nTotal Shares -- {shares}")
 #--------------------------------------------------
-def engagement_entry():
-    #allows user to record engagement metrics
+def engagement_entry():     #allows user to record engagement metrics
     file_check("engagement.txt")     #runs the function to check whether engagement.txt exists
     subheading("Record Engagement Metrics")
     valid_posts = posted_check()    #gets a list of posts with "Posted" status
