@@ -57,3 +57,25 @@ def validate_platform(platform_input):   # runs check if user input of platofrm 
     except FileNotFoundError:
         print("--> platforms.txt not found.")
     return False
+
+def file_check(file_name):
+    #checks whether core files exists
+    print(f"\nChecking if {file_name} exists...")
+    try:
+        with open(f"{file_name}", "r") as file:   #try to open the file in read mode,
+            print(f"{file_name} exists, no changes made.")  #if successful, it means the file exists
+            pass
+    except FileNotFoundError:   #if an error occurred, that means the file does not exist
+        print(f"{file_name} does not exists, creating a new file.")
+        if file_name == "platforms.txt":     #if platform.txt does not exist, automatically fill in valid platforms
+            with open(f"{file_name}", "a") as file:
+                file.write("1,Facebook\n"
+                           "2,Tiktok\n"
+                           "3,Instagram\n"
+                           "4,X")
+            print("All valid platforms automatically filled in")
+        else:
+            with open(f"{file_name}", "w") as file:
+                pass
+        pass
+        
