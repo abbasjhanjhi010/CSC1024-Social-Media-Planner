@@ -57,9 +57,9 @@ def new_post_menu():
 
 def draft_new_post():
    # Abbas validation file, removed try catch block previously in its place
-   file_check("posts.txt")
-   file_check("platforms.txt")
-   while True:
+    file_check("posts.txt")
+    file_check("platforms.txt")
+    while True:
         post_id = validate_required_input("\nEnter Post ID: ")
         if validate_unique_id(post_id):
             break
