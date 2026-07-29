@@ -62,7 +62,6 @@ def file_check(file_name):  #checks whether core files exists - Yao Tengs contri
     print(f"\nChecking if {file_name} exists...")
     try:
         with open(f"{file_name}", "r") as file:   #try to open the file in read mode,
-            print(f"{file_name} exists, no changes made.")  #if successful, it means the file exists
             pass
     except FileNotFoundError:   #if an error occurred, that means the file does not exist
         print(f"{file_name} does not exists, creating a new file.")
