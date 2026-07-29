@@ -1,7 +1,10 @@
+# check for recurring "=====" and also check for notification function uses. and also consder making a horizontal line function
+
+
 # ======================
 #Abbas's code section:
 # ======================
-import time    # email sent to Dr to double check if this is allowed or not
+import time   
 
 from validation import validate_date, validate_positive_integer,validate_required_input, validate_unique_id, validate_platform, file_check
 
@@ -10,7 +13,7 @@ def subheading(content):
 def heading(content):
     print(f"\n=====================================\n{content}\n=====================================")  # takes less space for heading 
 def notification(content):
-    print(f"\n==============={content}===============\n")
+    print(f"\n==============={content}===============\n")     # mostly unused - consider possibility of removing it 
 # ======================
 #Cheng Zher's code section:
 # ======================
@@ -94,7 +97,7 @@ def draft_new_post():
     status = "Draft" #every new created post starts with Draft status
     with open("posts.txt","a") as file: #"a" = append mode, add lines without erasing existing posts
         file.write(f"{post_id},{platform},{caption},{schedule_date},{status}\n") #comma separated to match read/split format in file
-    print("\n========Post added successfully========")
+    notification("Post Added Successfully!")
     print(f"---> [Saved into posts.txt]")
     print(f"     ID: {post_id} | Platform: {platform} | Caption: {caption} | Schedule: {schedule_date} | Status: {status}") #display field separation using "|"
 
@@ -116,7 +119,7 @@ def post_status_menu():
                 print("Enter a valid option (1-3)")
 
 def update_post_status():
-    print("\n====== Update Post Status ======")
+    notification("Update Post Status")
 
     post_id = validate_required_input("Enter the Post ID to update: ") #now goes to validation.py
 
@@ -181,12 +184,9 @@ def update_post_status():
 
 def content_calendar_menu():
     while True:
-        subheading("Content Calendar")
-        #or just the notification message for content calendar 
         display_content_calendar()
         time.sleep(2)       # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
-        # maybe give confirmation message or something over here
-        return      # exits loop
+        return      # exits loop after 2 second delay 
 
 def display_content_calendar():
     notification("Content Calendar") 
