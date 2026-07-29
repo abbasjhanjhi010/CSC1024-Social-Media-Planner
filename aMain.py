@@ -179,23 +179,23 @@ def update_post_status():
 
 def content_calendar_menu():
     while True:
-        subheading("Content Calendar Menu")
+        subheading("Content Calendar")
         print("\n1. Display All Posts")
-        print("2. View Full Post Details")
+        print("2. View Individual Post Detail")
         print("3. Go Back")
         choice = input("\nEnter your choice: ").strip()
         match choice:
             case "1":
                 display_content_calendar()
             case "2":
-                view_full_details()
+                view_individual_post_detail()
             case "3":
                 return #returns back to main menu loop
             case _:
-                print("Enter valid choice (1-4)")
+                print("Enter valid choice (1-4)") 
 
 def display_content_calendar():
-    notification("Content Calendar")
+    notification("Content Calendar") 
     try:
         with open("posts.txt", "r") as file:
             lines = file.readlines() #reads all lines in posts.txt
@@ -223,31 +223,6 @@ def display_content_calendar():
 
         #left aligning each column field to each respective field width
         print(f"{post_id:<10}{platform:<15}{caption:<25}{schedule_date:<14}{status:<10}")
-
-def view_full_details(): #to check the specific details of a post, since some may be cut off for being too lengthy in the table
-    print("\n====== View Post Details ======")
-
-    # Abbas - validation file
-    post_id = validate_required_input("\nEnter Post ID: ")
-    
-
-    try:
-        with open("posts.txt", "r") as file:
-            lines = file.readlines() #read saved post lines in posts.txt
-    except FileNotFoundError: 
-        print("No posts found.")
-        return
-
-    for line in lines: #search for matching post ID in posts.txt
-        data = line.strip().split(",") #split line with comma to match their respective fields/columns
-        if data[0] == post_id: #check for a match in the post ID column
-            print(f"\nPost ID: {data[0]}")
-            print(f"Platform: {data[1]}")
-            print(f"Caption: {data[2]}")
-            print(f"Scheduled Date: {data[3]}")
-            print(f"Status: {data[4]}")
-            return #post ID was found and printed so it stops searching
-    print("Post ID not found.") #match was not found for the post ID
 
 # ======================
 #Yao Teng's code section:
@@ -512,4 +487,4 @@ def export_report():
 if __name__ == "__main__":
     main_menu()
 
-# Final program testing by Abbas & Cheng Zher
+# Final program testing and code review by Abbas 
