@@ -59,7 +59,6 @@ def validate_platform(platform_input):   # runs check if user input of platofrm 
     return False
 
 def file_check(file_name):  #checks whether core files exists - Yao Tengs contribution
-    print(f"\nChecking if {file_name} exists...")
     try:
         with open(f"{file_name}", "r") as file:   #try to open the file in read mode,
             pass

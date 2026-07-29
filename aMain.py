@@ -346,7 +346,7 @@ def generate_report_menu():
             case _:
                 print("Enter a valid choice (1-5)")
 def total_posts():   #calculates the total posts from each platform
-    fb, ig, tt, x = 0
+    fb = ig  =  tt  =  x  = 0
     data = posted_check()       #gets the data of all posts with "Posted" status
     for row in data:            #sort each row of data by platform
         platform = row[1]
@@ -359,14 +359,17 @@ def total_posts():   #calculates the total posts from each platform
         elif platform.lower()== "x":
             x += 1
     total_posted = ig + fb + ig + tt + x
-    return(f"\n\nTotal Posts From All Platforms"
+    print(f"\n\nTotal Posts From All Platforms"
            f"\n=============================="
            f"\nFacebook -- {fb}"
            f"\nInstagram -- {ig}"
            f"\nTikTok -- {tt}"
            f"\nX -- {x}"
            f"\nTotal Posted -- {total_posted}"
-           f"\n==============================\n")
+           f"\n==============================")
+    time.sleep(2)       # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
+    return
+
 def best_performing():      #calculate and find the best performance post
     try:
         best_score = 0
