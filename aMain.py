@@ -61,7 +61,7 @@ def new_post_menu():
             case "2":
                 return #return back to main_menu() loop
             case _:
-                print("Enter valid choice (1-3)")
+                print("Enter valid choice (1/2)")
 
 def draft_new_post():
    # Abbas validation file, removed try catch block previously in its place
