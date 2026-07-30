@@ -1,4 +1,4 @@
-1,facebook
+1,Facebook
 2,TikTok
 3,Instagram
-4,x
+4,X

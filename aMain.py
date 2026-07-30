@@ -35,12 +35,14 @@ def main_menu():
                 post_status_menu()
             case "3":
                 engagement_entry()
+                time.sleep(2)
             case "4":
                 content_calendar_menu()
             case "5":
                 generate_report_menu()
             case "6":
                 export_report()
+                time.sleep(2)
             case "7":
                 print("Exiting Program...")
                 break #exits the while True loop, ending the program
@@ -100,6 +102,7 @@ def draft_new_post():
     notification("Post Added Successfully!")
     print(f"---> [Saved into posts.txt]")
     print(f"     ID: {post_id} | Platform: {platform} | Caption: {caption} | Schedule: {schedule_date} | Status: {status}") #display field separation using "|"
+    time.sleep(2)
 
 # ======================
 #Keen's code section:
@@ -113,6 +116,7 @@ def post_status_menu():
         match choice:
             case '1':
                 update_post_status()
+                time.sleep(2)
             case '2':
                 return #returns back to main menu loop
             case _:
@@ -320,7 +324,7 @@ def engagement_entry():     #allows user to record engagement metrics
                     print(f"\n========================================"
                           f"\nEngagement data successfully logged.\n"
                           f"\nPostID, Platform, Views, Likes, Comments, Shares"
-                          f"\n{post_ID},{platform},{views},{likes},{comments},{shares}\n")
+                          f"\n{post_ID}, {platform}, {views}, {likes}, {comments}, {shares}\n")
                     break
                 else:
                     print("\n============================="
@@ -345,14 +349,18 @@ def generate_report_menu():
         match choice.strip():
             case "1":
                 print(total_posts())
+                time.sleep(2)  # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
             case "2":
                 print(best_performing())
+                time.sleep(2)
             case "3":
                 print(highest_interaction())
+                time.sleep(2)
             case "4":
                 print(total_posts())
                 print(best_performing())
                 print(highest_interaction())
+                time.sleep(2)
             case "5":
                 break
             case _:
@@ -371,7 +379,7 @@ def total_posts():   #calculates the total posts from each platform
         elif platform.lower()== "x":
             x += 1
     total_posted = ig + fb + ig + tt + x
-    print(f"\n\nTotal Posts From All Platforms"
+    return(f"\n\nTotal Posts From All Platforms"
            f"\n=============================="
            f"\nFacebook -- {fb}"
            f"\nInstagram -- {ig}"
@@ -379,8 +387,6 @@ def total_posts():   #calculates the total posts from each platform
            f"\nX -- {x}"
            f"\nTotal Posted -- {total_posted}"
            f"\n==============================")
-    time.sleep(2)       # adds a delay of 2 seconds, before the Main Menu pushes the table higher up
-    return
 
 def best_performing():      #calculate and find the best performance post
     try:
@@ -475,7 +481,7 @@ def export_report():
         highest_interaction_report = highest_interaction()
         subheading("Exporting Performance Report..")  
         while True:
-            report_name = input("\nEnter the name of the file [Q to quit]: ")       #prompts user to enter name of report
+            report_name = input("\nEnter the name of the file (Don't include file extensions) [Q to quit]: ")       #prompts user to enter name of report
             if report_name.strip() != "":       #checks if user entered nothing, if yes then prompt user to enter again
                 if report_name.strip().upper()!= "Q":       #checks if user entered "Q", if yes then break from this function
                     with open(f"{report_name}.txt", "w") as file:       #open a new file with user specified name
