@@ -98,5 +98,3 @@
 98,X,Customer testimonial,23/08/2026,Posted
 99,Instagram,Did you know?,15/05/2026,Scheduled
 100,Facebook,New product launch!,26/11/2026,Draft
-101,x,test,1/1/1111,Scheduled
-102,tiktok,test2,2/2/2222,Posted
