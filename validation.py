@@ -75,5 +75,4 @@ def file_check(file_name):  #checks whether core files exists - Yao Tengs contri
             with open(f"{file_name}", "w") as file:
                 pass
         pass
-    file.close()
         
