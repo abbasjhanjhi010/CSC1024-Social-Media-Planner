@@ -1,6 +1,3 @@
-# check for recurring "=====" and also check for notification function uses. and also consder making a horizontal line function
-
-
 # ======================
 #Abbas's code section:
 # ======================
@@ -13,7 +10,7 @@ def subheading(content):
 def heading(content):
     print(f"\n=====================================\n{content}\n=====================================")  # takes less space for heading 
 def notification(content):
-    print(f"\n==============={content}===============\n")     # mostly unused - consider possibility of removing it 
+    print(f"\n==============={content}===============\n")     #heading 3
 # ======================
 #Cheng Zher's code section:
 # ======================
