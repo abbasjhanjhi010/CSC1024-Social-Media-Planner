@@ -1,6 +1,6 @@
 import os
 import sys
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(os.path.dirname(os.path.abspath(__file__)))   # helps the program run on idle
 
 # ======================
 #Abbas's code section:
