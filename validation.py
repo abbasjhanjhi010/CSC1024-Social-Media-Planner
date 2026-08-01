@@ -33,14 +33,16 @@ def validate_positive_integer(prompt):   # makes sure all inputs for record enga
 
 def validate_unique_id(post_id):    # Checks if POSTID is unique and numeric
     if not post_id.isdigit():
-        return print("--> Only positive integer ID's are accepted")
+        print("--> Only positive integer ID's are accepted")
+        return False
 
     try:
         with open("posts.txt", "r") as file:
             for line in file:
                 data = line.strip().split(",")
                 if data[0].upper() == post_id.upper():
-                    return print("--> The ID you entered isn't unique, enter unique ID.")
+                    print("--> The ID you entered isn't unique, enter unique ID.")
+                    return False
     except FileNotFoundError:
         # File does not exist yet, therefore no duplicates
         pass

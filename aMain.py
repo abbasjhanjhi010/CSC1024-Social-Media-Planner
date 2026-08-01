@@ -375,7 +375,7 @@ def total_posts():   #calculates the total posts from each platform
             tt += 1
         elif platform.lower()== "x":
             x += 1
-    total_posted = ig + fb + ig + tt + x
+    total_posted = ig + fb + tt + x
     return(f"\n\nTotal Posts From All Platforms"
            f"\n=============================="
            f"\nFacebook -- {fb}"
